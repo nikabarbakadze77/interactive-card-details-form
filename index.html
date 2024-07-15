@@ -56,11 +56,12 @@
           </div>
           <div class="grid-2">
             <label for="card-number">CARD NUMBER</label>
-            <input type="number" oninput="if(this.value.length > this.value.maxLength) this.value=this.value.slice(0,this.value.maxLength)"
+            <input type="number" 
+              oninput="onInput(this)"
               id="card-number"
               placeholder="e.g 1234 5678 9123 0000"
-              minlength="16"
-              maxlength="16"
+              min="16"
+              maxLength="16"
               required
             >
           </div>
@@ -71,7 +72,7 @@
                 <div>
                   <input type="number"
                     placeholder="MM"
-                    oninput="if(this.value.length > this.value.maxLength) this.value=this.value.slice(0,this.value.maxLength)"
+                    oninput="onInput(this)"
                     maxlength="2"
                     minlength="2"
                     id="card-month"
@@ -81,7 +82,7 @@
                 <div>
                   <input type="number"
                     placeholder="YY"
-                    oninput="if(this.value.length > this.value.maxLength) this.value=this.value.slice(0,this.value.maxLength)"
+                    oninput="onInput(this)"
                     maxlength="2"
                     minlength="2"
                     id="card-year"
@@ -93,7 +94,7 @@
             <div class="grid-4">
               <label for="card-cvc">CVC</label>
               <input type="number"
-                oninput="if(this.value.length > this.value.maxLength) this.value=this.value.slice(0,this.value.maxLength)"
+                oninput="onInput(this)"
                 minlength="3"
                 maxlength="3"
                 placeholder="e.g 123"
@@ -112,7 +113,7 @@
         </div>
       </div>
     </div>
-    <div id="error-message">
+    <div id="error-message" class="hidden">
       <p>Can't be blank</p>
     </div>
   </body>

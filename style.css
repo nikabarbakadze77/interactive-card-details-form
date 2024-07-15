@@ -273,3 +273,8 @@ form button {
         margin-top: 6rem;
     }
 }
+
+label {
+    color: black;
+    font-weight: 600;
+}

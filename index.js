@@ -21,7 +21,20 @@ const form = document.querySelector("form");
 
 const error = document.querySelector("#error-message")
 
+
+function onInput(input) {
+    const value = input.value
+    const max = input.maxLength
+    if(value.length > max) {
+        input.value = value.slice(0, max)
+    }
+}
+
 function setCardNumber(e) {
+
+    if (e.target.value.length > 16) {
+        return false
+    }
     cardNumber.innerText = format(e.target.value);
 }
 
@@ -41,8 +54,13 @@ function setCardCvc(e) {
     cardCvc.innerText = e.target.value;
 }
 
-function format(s) {
-    return s.toString().replace(/\d{4}{?=.}/g,"$&");
+function format (value) {
+    const regex = /^(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})$/g
+    const onlyNumbers = value.replace(/[^\d]/g, '')
+  
+    return onlyNumbers.replace(regex, (regex, $1, $2, $3, $4) =>
+      [$1, $2, $3, $4].filter(group => !!group).join(' ')
+    )
 }
 
 function handleSubmit(e) {
